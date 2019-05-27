@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,8 +25,8 @@ public class Dispatcher implements IDispatcher {
 
 	private static final int MAX_JERARQUIA = 3;
 	private static final int MAX_LLAMADAS_ACTIVAS = 10;
-	private static final int MIN_TIEMPO = 5000;
-	private static final int MAX_TIEMPO = 10001;
+	private static final int MIN_TIEMPO = 5;
+	private static final int MAX_TIEMPO = 11;
 	private static final String MSG_NO_DISPONIBLE = " no existe personas que puedan atender su llamada. por favor marque mas tarde ";
 	private static final String MSG_NO_ACTIVA = " La llamda no se encuentra activa";
 
@@ -69,11 +70,15 @@ public class Dispatcher implements IDispatcher {
 		procesarLlamada(llamada, atiendeLlamada.get());
 	}
 
-	private void procesarLlamada(Llamada llamada, Empleado atiendeLlamada) throws InterruptedException {
+	private synchronized void procesarLlamada(Llamada llamada, Empleado atiendeLlamada) throws InterruptedException {
 		LOG.info("Se atiende la llamada del Señor " + llamada.getEmisor().getNombre());
 		llamada.setReceptor(atiendeLlamada);
 		atiendeLlamada.setLlamada(llamada);
-		Thread.sleep(ThreadLocalRandom.current().nextInt(MIN_TIEMPO, MAX_TIEMPO));
+		try {
+			Thread.sleep(ThreadLocalRandom.current().nextInt(MIN_TIEMPO, MAX_TIEMPO));
+		} catch (InterruptedException ex) {
+			Thread.currentThread().interrupt();
+		}
 		atiendeLlamada.colgarLlamada();
 		llamada.setReceptor(null);
 		llamadas.remove(llamada);
