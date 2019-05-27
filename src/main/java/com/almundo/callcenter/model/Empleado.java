@@ -4,9 +4,17 @@ import java.io.Serializable;
 
 import com.almundo.callcenter.model.cons.Cargo;
 
+/***
+ * Esta clase representa los empleados del call center y el cargo que ocupan y
+ * que determinan quien debe realizar la atencion de una llamada.
+ * 
+ * @author stilaguy
+ *
+ */
 public class Empleado extends Persona implements Serializable {
 
 	private static final long serialVersionUID = -4628558970953536682L;
+	
 	private Cargo cargo;
 	private Llamada llamada;
 

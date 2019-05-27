@@ -9,6 +9,13 @@ import org.springframework.scheduling.annotation.AsyncConfigurerSupport;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+/**
+ * Permite la configuracion del proyecto spring boot habilitando la
+ * configuracion asincronica para las operaciones de los servicios.
+ * 
+ * @author stilaguy
+ *
+ */
 @Configuration
 @EnableAsync
 @EnableAutoConfiguration
