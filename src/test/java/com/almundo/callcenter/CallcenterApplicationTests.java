@@ -47,8 +47,12 @@ public class CallcenterApplicationTests {
 
 	@Test
 	public void realizarLlamadas() throws Exception {
+		int llamadas = 0;
 		for (Persona persona : emisores) {
 			try {
+				if (llamadas > 9)
+					break;
+				llamadas++;
 				servicio.dispatchCall(new Llamada(persona));
 			} catch (Exception e) {
 				System.out.println(e.getMessage());

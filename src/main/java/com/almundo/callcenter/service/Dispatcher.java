@@ -2,7 +2,7 @@ package com.almundo.callcenter.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -57,7 +57,7 @@ public class Dispatcher implements IDispatcher {
 			throw new Exception("Señor " + llamada.getEmisor().getNombre() + MSG_NO_DISPONIBLE);
 		llamada.setReceptor(atiendeLlamada);
 		atiendeLlamada.setLlamada(llamada);
-		Thread.sleep(new Random(System.currentTimeMillis()).nextInt(1001));
+		Thread.sleep(ThreadLocalRandom.current().nextInt(500, 1001));
 		atiendeLlamada.colgarLlamada();
 		llamada.setReceptor(null);
 	}
