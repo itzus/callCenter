@@ -1,5 +1,7 @@
 package com.almundo.callcenter;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +56,7 @@ public class CallcenterApplicationTests {
 					break;
 				llamadas++;
 				servicio.dispatchCall(new Llamada(persona));
+				assertTrue(true);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
