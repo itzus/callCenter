@@ -12,7 +12,7 @@
 	<artifactId>callcenter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>callcenter</name>
-	<description>Demo project for Spring Boot</description>
+	<description>CallCenter prueba para al mundo.</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -21,11 +21,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
 		<dependency>
